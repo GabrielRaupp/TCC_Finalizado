@@ -5,6 +5,7 @@ import styles from './Login.module.css';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loggedInUsername, setLoggedInUsername] = useState('');
   const navigate = useNavigate();
@@ -63,6 +64,10 @@ const Login = () => {
     navigate('/ForgotPassword');
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); 
+  };
+
   return (
     <div className={styles.logincontainer}>
       {isLoggedIn ? (
@@ -95,15 +100,21 @@ const Login = () => {
                 required
               />
             </div>
-            <div>
+            <div className={styles.passwordWrapper}>
               <label htmlFor="password">Senha:</label>
               <input
-                type="password"
+                type={showPassword ? 'text' : 'password'} 
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <span
+                className={styles.passwordToggleIcon}
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? '👁️' : '🙈'} 
+              </span>
             </div>
             <button type="submit" className={styles.submitButton}>
               Entrar

@@ -62,6 +62,24 @@
   box-shadow: 0 0 5px rgba(179, 154, 42, 0.5); 
 }
 
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
 button[type="submit"] {
   background-color: #b39a2a;
   color: #fff;

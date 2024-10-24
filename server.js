@@ -238,7 +238,7 @@ app.post('/forgotpassword', async (req, res) => {
       subject: 'Redefinição de senha',
       text: `Você está recebendo este email porque você solicitou a redefinição da sua senha.\n\n` +
             `Clique no seguinte link para redefinir sua senha:\n\n` +
-            `http://localhost:${PORT}/reset/${token}\n\n` +
+            `http://localhost:${PORT}/resetarSenha/${token}\n\n` +
             `Se você não solicitou isso, ignore este email.\n`,
     };
 
@@ -354,7 +354,6 @@ app.post('/horarios', async (req, res) => {
     console.log(`Email enviado para ${user.email} sobre o novo horário.`);
 
    
-    console.log('Mensagem WhatsApp enviada com sucesso.');
 
     // Retornar resposta de sucesso
     res.status(201).json({ message: 'Horário cadastrado com sucesso e notificações enviadas.' });

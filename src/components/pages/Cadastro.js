@@ -5,6 +5,7 @@ import styles from './Cadastro.module.css';
 const Cadastro = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); 
   const [email, setEmail] = useState('');
   const [campus, setCampus] = useState('');
   const [telefone, setTelefone] = useState('');
@@ -30,6 +31,10 @@ const Cadastro = () => {
     } catch (error) {
       alert(error.message);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); 
   };
 
   return (
@@ -58,12 +63,20 @@ const Cadastro = () => {
 
         <div className={styles.campo}>
           <label htmlFor="password">Senha:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              type={showPassword ? 'text' : 'password'} 
+              id="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <span
+              className={styles.passwordToggleIcon}
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? '👁️' : '🙈'} 
+            </span>
+          </div>
         </div>
 
         <div className={styles.campo}>

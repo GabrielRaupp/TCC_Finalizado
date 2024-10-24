@@ -5,6 +5,7 @@ import styles from './ResetarSenha.module.css';
 const ResetarSenha = () => {
   const { token } = useParams(); 
   const [newPassword, setNewPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Estado para controlar visibilidade da senha
   const [message, setMessage] = useState('');
 
   const handleResetPassword = async (e) => {
@@ -36,6 +37,10 @@ const ResetarSenha = () => {
       setMessage('Erro ao redefinir a senha. Tente novamente.');
     }
   };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Alterna entre mostrar e esconder a senha
+  };
   
   return (
     <div className={styles.container}>
@@ -43,14 +48,22 @@ const ResetarSenha = () => {
       <form className={styles.form} onSubmit={handleResetPassword}>
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="newPassword">Nova Senha:</label>
-          <input
-            className={styles.input}
-            type="password"
-            id="newPassword"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-          />
+          <div className={styles.passwordWrapper}>
+            <input
+              className={styles.input}
+              type={showPassword ? 'text' : 'password'} // Mostra ou esconde a senha
+              id="newPassword"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+            />
+            <span
+              className={styles.passwordToggleIcon}
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? '👁️' : '🙈'} {/* Ícone de mostrar/esconder senha */}
+            </span>
+          </div>
         </div>
         <button className={styles.button} type="submit">Redefinir Senha</button>
       </form>
