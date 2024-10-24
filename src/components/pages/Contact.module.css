@@ -1,54 +1,53 @@
 .Contact {
-  background: linear-gradient(135deg, #3e3e3e, #6b6b6b); /* Gradiente para o fundo */
-  margin: 4.2em;
-  margin-left: 15%; /* Ajuste nas margens para centralizar */
+  background: linear-gradient(135deg, #707070, #6b6b6b);
+  margin: 10.2em;
+  margin-left: 15%;
   margin-right: 15%;
-  border: 3px solid #000; /* Cor da borda */
-  border-radius: 12px; /* Bordas arredondadas */
-  padding: 2.5em; /* Adiciona espaçamento interno */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra para profundidade */
-  text-align: center; /* Centraliza o texto */
+  border-radius: 12px;
+  padding: 2.5em;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 .h1 {
-  font-size: 2.8rem; /* Tamanho maior para o título */
-  margin-bottom: 1.5em; /* Espaçamento abaixo do título */
-  color: #ffffff; /* Cor do texto */
-  font-family: 'Arial', sans-serif; /* Fonte moderna */
-  letter-spacing: 1px; /* Espaçamento entre letras */
+  font-size: 2.8rem;
+  margin-bottom: 1.5em;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  letter-spacing: 1px;
 }
 
 .social_list {
   display: flex;
   justify-content: center;
   list-style-type: none;
-  padding: 0; /* Remove o padding padrão */
+  padding: 0;
 }
 
 .social_list li {
-  margin: 0 1.5em; /* Aumenta o espaçamento horizontal */
-  width: 60px; /* Define a largura do item da lista */
-  height: 60px; /* Define a altura do item da lista */
-  border-radius: 50%; /* Círculo */
-  background-color: #ffffff; /* Fundo branco */
+  margin: 0 1.5em;
+  width: 80px; 
+  height: 80px; 
+  border-radius: 50%;
+  background-color: #000;
   display: flex;
   align-items: center;
-  justify-content: center; /* Centraliza ícones */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra dos ícones */
-  transition: transform 0.3s, box-shadow 0.3s; /* Transições suaves */
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .social_link {
-  font-size: 2.5rem; /* Aumenta o tamanho dos ícones */
-  color: #3e3e3e; /* Cor do ícone */
-  transition: color 0.3s; /* Transição de cor */
+  font-size: 5rem; 
+  color: #3e3e3e;
+  transition: color 0.3s;
 }
 
 .social_list li:hover {
-  transform: scale(1.1); /* Efeito de aumentar no hover */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Efeito de sombra no hover */
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
 }
 
 .social_list li:hover .social_link {
-  color: #f0db4f; /* Muda a cor do ícone no hover */
+  color: #f0db4f;
 }

@@ -31,10 +31,6 @@ function App() {
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/ForgotPassword" element={<ForgotPassword />} />
           <Route path="/ResetarSenha/:token" element={<ResetarSenha />} />
-
-
-
-
           
         </Routes>
       </Container>
