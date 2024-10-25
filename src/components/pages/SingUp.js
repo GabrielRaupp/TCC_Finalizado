@@ -3,18 +3,14 @@ import styles from './SingUp.module.css';
 
 function SingUp() {
   return (
-    <section className={styles.div}>
-      <h1 className={styles.h1}> </h1>
-      <ul className={styles.div}>
+    <section className={styles.container}>
+      <h1 className={styles.title}>Bem-vindo!</h1>
+      <ul className={styles.opções}>
         <li>
-          <h1 className={styles.conta}>
-            <Link to="/login">Já tenho conta</Link> 
-          </h1>
+          <Link to="/login" className={styles.Opção}>Já tenho conta</Link>
         </li>
         <li>
-          <h1 className={styles.conta}>
-            <Link to="/cadastro">Não tenho conta</Link> 
-          </h1>
+          <Link to="/cadastro" className={styles.Opção}>Não tenho conta</Link>
         </li>
       </ul>
     </section>

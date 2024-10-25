@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from './HorarioForm.module.css'; 
+import styles from './HorarioForm.module.css';
 
 const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
   const [name, setName] = useState('');
-  const [horarios, setHorarios] = useState(''); 
+  const [horarios, setHorarios] = useState('');
   const [category, setCategory] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(''); // Novo estado para a mensagem de sucesso
 
   useEffect(() => {
     if (horarioData) {
       setName(horarioData.name);
       setHorarios(horarioData.horarios);
-      setCategory(horarioData.category || ''); 
+      setCategory(horarioData.category || '');
     }
   }, [horarioData]);
 
@@ -36,19 +37,17 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
       let response;
       const horarioPayload = {
         name,
-        horarios: parsedHorario.toISOString(), 
+        horarios: parsedHorario.toISOString(),
         category,
       };
 
-      console.log('horarioPayload:', horarioPayload);
-
       if (horarioData) {
         response = await axios.put(`/horarios/${horarioData._id}`, horarioPayload, {
-          withCredentials: true, 
+          withCredentials: true,
         });
       } else {
         response = await axios.post('/horarios', horarioPayload, {
-          withCredentials: true, 
+          withCredentials: true,
         });
       }
 
@@ -56,10 +55,14 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
       setHorarios('');
       setCategory('');
       setErrorMessage('');
+      setSuccessMessage('Horário Criado'); // Exibe mensagem de sucesso
 
       if (onSubmitSuccess) {
-        onSubmitSuccess(response.data); 
+        onSubmitSuccess(response.data);
       }
+
+      // Remove a mensagem de sucesso após 3 segundos
+      setTimeout(() => setSuccessMessage(''), 3000);
     } catch (error) {
       console.error('Erro ao salvar o horário:', error);
       setErrorMessage('Erro ao salvar o horário. Tente novamente.');
@@ -68,7 +71,7 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
 
   return (
     <div className={styles.form}>
-      <h2>{horarioData ? 'Editar Horário' : ''}</h2>
+      <h2>{horarioData ? 'Editar Horário' : 'Novo Horário'}</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Nome:</label>
@@ -82,7 +85,7 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
           />
         </div>
         <div>
-          <label htmlFor="horarios">Horários:</label>
+          <label htmlFor="horarios">Horário:</label>
           <input
             type="datetime-local"
             id="horarios"
@@ -111,6 +114,7 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
           </select>
         </div>
         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+        {successMessage && <p className={styles.success}>{successMessage}</p>}
         <button type="submit">{horarioData ? 'Atualizar Horário' : 'Salvar Horário'}</button>
       </form>
     </div>

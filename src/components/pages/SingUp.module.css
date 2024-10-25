@@ -1,52 +1,72 @@
-.h1 {
+/* Container principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20rem;
+  background-color: #f0f0f5;
+}
+
+/* Título */
+.title {
   font-size: 2.5rem;
-  padding: 1.5em;
-  padding-top: 6.5em;
-  padding-left: 4.5em;
-  color: black;
+  color: #333;
+  margin-bottom: 2rem;
   text-align: center;
-  justify-content: center;
-
 }
 
-.conta {
-  font-size: 2.2rem;
-  padding: 0.3em;
-  margin: 0.5em;
-  color: black;
-  text-align: center;
+.opções {
+  display: flex;
+  justify-content: center; 
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0; 
+}
+
+.Opção {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  color: #fff;
   background-color: #ffbb33;
-  border: 3px solid black;
-  border-radius: 12pt;
+  border-radius: 8px;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
   display: inline-block;
-  justify-content: center;
-  text-align: center;
-
+  border: 2px solid #000;
+  text-shadow: 1pt 1pt 1pt #5a5555 ;
 }
 
-
-
-.conta a {
-  text-decoration: none; 
-  color: inherit; 
-  text-decoration: none;
-
+.Opção:hover {
+  background-color: #e0a600;
+  transform: scale(1.05);
 }
 
-.conta a:hover {
-  text-decoration: none;
-  transition: font-size 0.5s ease;
-  font-size: 2.4rem;
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
 
-
+  .Opção {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
 }
 
-.div {
-  justify-content: center;
-  text-align: center;
-  padding-left: 12.5em;
-  text-decoration: none;
-  list-style-type: none;
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
+  }
 
+  .Opção {
+    font-size: 1rem;
+    padding: 0.6rem 1rem;
+  }
 
+  .Opções {
+    flex-direction: column;
+  }
 }
