@@ -417,9 +417,7 @@ app.post('/horarios', async (req, res) => {
   }
 });
 
-// Enviar notificações
-await sendNotification(user, name, horarios);
-scheduleOneHourReminder(user, name, horarios);
+
     
 app.use(express.static(path.join(__dirname, 'build')));
 
