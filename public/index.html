@@ -1,19 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
-    <link rel="apple-touch-icon" href="/logo192.png" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>IntelAgend</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Abelhas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justgage"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Projeto Abelhas</h1>
+    <div class="dashboard">
+        <!-- Seção Ambiente -->
+        <div class="section">
+            <h2>Ambiente</h2>
+            <div class="gauge" id="tempGaugeAmb"></div>
+            <canvas id="tempChartAmb"></canvas>
+            <div class="gauge" id="humidityGaugeAmb"></div>
+            <canvas id="humidityChartAmb"></canvas>
+            <div class="gauge" id="pressureGaugeAmb"></div>
+            <canvas id="pressureChartAmb"></canvas>
+        </div>
+        
+        <!-- Seção Caixa 9 -->
+        <div class="section">
+            <h2>Caixa 9</h2>
+            <div class="gauge" id="tempGaugeC9"></div>
+            <canvas id="tempChartC9"></canvas>
+            <div class="gauge" id="humidityGaugeC9"></div>
+            <canvas id="humidityChartC9"></canvas>
+            <div class="gauge" id="pressureGaugeC9"></div>
+            <canvas id="pressureChartC9"></canvas>
+        </div>
+
+        <!-- Seção Caixa 10 -->
+        <div class="section">
+            <h2>Caixa 10</h2>
+            <div class="gauge" id="tempGaugeC10"></div>
+            <canvas id="tempChartC10"></canvas>
+            <div class="gauge" id="humidityGaugeC10"></div>
+            <canvas id="humidityChartC10"></canvas>
+            <div class="gauge" id="pressureGaugeC10"></div>
+            <canvas id="pressureChartC10"></canvas>
+        </div>
+
+        <!-- Seção Caixa 12 -->
+        <div class="section">
+            <h2>Caixa 12</h2>
+            <div class="gauge" id="tempGaugeC12"></div>
+            <canvas id="tempChartC12"></canvas>
+            <div class="gauge" id="humidityGaugeC12"></div>
+            <canvas id="humidityChartC12"></canvas>
+            <div class="gauge" id="pressureGaugeC12"></div>
+            <canvas id="pressureChartC12"></canvas>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
