@@ -8,6 +8,7 @@ import bcrypt from 'bcrypt';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import session from 'express-session';
+import twilio from 'twilio'; 
 
 dotenv.config();
 
@@ -37,7 +38,10 @@ mongoose.connect(uri, {
   .then(() => console.log('Conectado ao MongoDB Atlas com sucesso!'))
   .catch((error) => console.error('Erro ao conectar ao MongoDB:', error));
 
-
+  // Configuração Twilio
+const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const twilioWhatsAppNumber = 'whatsapp:+14155238886'; // Número do WhatsApp do Twilio
+const twilioPhoneNumber = process.env.TWILIO_PHONE_NUMBER;
 
 // Esquema de Horário
 const HorarioSchema = new mongoose.Schema({
@@ -306,8 +310,52 @@ app.get('/horarios', async (req, res) => {
   }
 });
 
+// Função para enviar mensagens WhatsApp e SMS
+async function sendNotification(user, name, horarios) {
+  const formattedTime = new Date(horarios).toLocaleString();
 
+  // Mensagem para WhatsApp
+  await twilioClient.messages.create({
+    body: `Olá ${user.username}, você cadastrou um novo horário: ${name} às ${formattedTime}.`,
+    from: twilioWhatsAppNumber,
+    to: `whatsapp:${user.telefone}`,
+  });
 
+  // Mensagem para SMS
+  await twilioClient.messages.create({
+    body: `Você tem um compromisso marcado: ${name} às ${formattedTime}.`,
+    from: twilioPhoneNumber,
+    to: user.telefone,
+  });
+
+  console.log(`Notificações enviadas para ${user.username} (${user.telefone}) via WhatsApp e SMS.`);
+}
+
+// Função para agendar alerta 1 hora antes
+function scheduleOneHourReminder(user, name, horarios) {
+  const timeToEvent = new Date(horarios).getTime() - Date.now();
+  const oneHourBefore = timeToEvent - 3600000; // 1 hora antes do compromisso
+
+  if (oneHourBefore > 0) {
+    setTimeout(async () => {
+      const formattedTime = new Date(horarios).toLocaleString();
+
+      await twilioClient.messages.create({
+        body: `Olá ${user.username}, lembrete: o horário ${name} começará em 1 hora às ${formattedTime}.`,
+        from: twilioWhatsAppNumber,
+        to: `whatsapp:${user.telefone}`,
+      });
+
+      await twilioClient.messages.create({
+        body: `Lembrete: o compromisso ${name} começará em 1 hora às ${formattedTime}.`,
+        from: twilioPhoneNumber,
+        to: user.telefone,
+      });
+
+      console.log(`Lembrete de 1 hora enviado para ${user.username}.`);
+    }, oneHourBefore);
+  }
+}
 
 
 // Rota para registrar um novo horário

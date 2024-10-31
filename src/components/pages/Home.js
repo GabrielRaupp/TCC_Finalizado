@@ -10,7 +10,7 @@ function Home() {
         Bem-vindo ao <span>IntelAgend</span>
       </h1>
       <p>Crie sua conta para começar a usufruir do nosso sistema!</p>
-      <LinkButton to="/Cadastro" text="Criar conta " />
+      <LinkButton className={styles.create} to="/Cadastro" text="Criar conta " />
       <img src={savings} alt="Savings" />
     </section>
   )

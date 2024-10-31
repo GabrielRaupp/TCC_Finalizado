@@ -31,3 +31,9 @@
     align-items: flex-start; 
   }
 }
+
+.addHorarioButton
+{
+  border-radius: 8px;
+  border: none;
+}

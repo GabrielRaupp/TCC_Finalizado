@@ -26,7 +26,6 @@ function Horarios() {
         const data = await response.json();
         console.log('Horários recebidos:', data);
 
-        // Ordena os horários por data/hora
         const sortedHorarios = data.sort((a, b) => new Date(a.horarios) - new Date(b.horarios));
         setHorarios(sortedHorarios);
       } catch (error) {
