@@ -4,30 +4,29 @@ import styles from './HorarioForm.module.css';
 
 const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
   const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
-  const [emailInvite, setEmailInvite] = useState(''); // Novo estado para o e-mail do convite
   const [horarios, setHorarios] = useState('');
   const [category, setCategory] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState(''); // Novo estado para a mensagem de sucesso
 
   useEffect(() => {
     if (horarioData) {
       setName(horarioData.name);
       setHorarios(horarioData.horarios);
       setCategory(horarioData.category || '');
-      setUsername(horarioData.username || '');
     }
   }, [horarioData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!username || !horarios || !category || !emailInvite) {
+    // Validação dos campos
+    if (!name || !horarios || !category) {
       setErrorMessage('Todos os campos são obrigatórios');
       return;
     }
 
+    // Validação de data
     const parsedHorario = new Date(horarios);
     if (isNaN(parsedHorario)) {
       setErrorMessage('Por favor, forneça uma data/hora válida.');
@@ -40,8 +39,6 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
         name,
         horarios: parsedHorario.toISOString(),
         category,
-        username,
-        emailInvite, // Enviar o e-mail do convite ao backend
       };
 
       if (horarioData) {
@@ -55,17 +52,16 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
       }
 
       setName('');
-      setUsername('');
-      setEmailInvite(''); // Limpar o e-mail do convite
       setHorarios('');
       setCategory('');
       setErrorMessage('');
-      setSuccessMessage('Horário Criado');
+      setSuccessMessage('Horário Criado'); // Exibe mensagem de sucesso
 
       if (onSubmitSuccess) {
         onSubmitSuccess(response.data);
       }
 
+      // Remove a mensagem de sucesso após 3 segundos
       setTimeout(() => setSuccessMessage(''), 3000);
     } catch (error) {
       console.error('Erro ao salvar o horário:', error);
@@ -78,35 +74,13 @@ const HorarioForm = ({ onSubmitSuccess, horarioData }) => {
       <h2>{horarioData ? 'Editar Horário' : 'Novo Horário'}</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="username">Usuário:</label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Digite o nome do usuário"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="emailInvite">E-mail do Convite:</label>
-          <input
-            type="email"
-            id="emailInvite"
-            value={emailInvite}
-            onChange={(e) => setEmailInvite(e.target.value)}
-            placeholder="Digite o e-mail para enviar o convite"
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="name">Nome do Horário:</label>
+          <label htmlFor="name">Nome:</label>
           <input
             type="text"
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="Digite o nome do horário"
+            placeholder="Digite o nome"
             required
           />
         </div>
