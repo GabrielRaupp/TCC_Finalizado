@@ -39,7 +39,7 @@ const ResetarSenha = () => {
   };
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword); // Alterna entre mostrar e esconder a senha
+    setShowPassword(!showPassword); 
   };
   
   return (
@@ -51,7 +51,7 @@ const ResetarSenha = () => {
           <div className={styles.passwordWrapper}>
             <input
               className={styles.input}
-              type={showPassword ? 'text' : 'password'} // Mostra ou esconde a senha
+              type={showPassword ? 'text' : 'password'} 
               id="newPassword"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
@@ -61,7 +61,7 @@ const ResetarSenha = () => {
               className={styles.passwordToggleIcon}
               onClick={togglePasswordVisibility}
             >
-              {showPassword ? '👁️' : '🙈'} {/* Ícone de mostrar/esconder senha */}
+              {showPassword ? '👁️' : '🙈'} 
             </span>
           </div>
         </div>

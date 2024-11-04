@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './ForgotPassword.module.css'; // Importação correta
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -24,22 +25,23 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div>
-      <h2>Redefinir Senha</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">E-mail:</label>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Redefinir Senha</h2>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.formGroup}>
+          <label htmlFor="email" className={styles.label}>E-mail:</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            className={styles.input}
           />
         </div>
-        <button type="submit">Enviar E-mail de Redefinição de Senha</button>
+        <button type="submit" className={styles.button}>Enviar E-mail de Redefinição de Senha</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </div>
   );
 };
