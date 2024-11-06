@@ -1,0 +1,88 @@
+.profileContainer {
+  max-width: 400px; /* Diminuído de 600px para 400px */
+  margin: 40px auto; 
+  padding: 20px; /* Diminuído de 30px para 20px */
+  border-radius: 12px; 
+  background-color: #ffffff; 
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3); 
+  transition: transform 0.3s, box-shadow 0.3s; 
+}
+
+.profileContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+  
+.profileHeader {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 28px; /* Diminuído de 30px para 28px */
+  font-family: 'Arial', sans-serif; 
+  font-weight: bold;
+}
+  
+.profileInfo {
+  margin: 15px 0;
+  font-size: 16px; /* Diminuído de 18px para 16px */
+  color: #444; 
+  line-height: 1.6; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 8px; 
+  background-color: #f9f9f9; 
+}
+  
+.profileInfo p {
+  margin: 8px 0;
+}
+  
+.profileInfo strong {
+  color: #000; 
+}
+  
+/* Responsividade */
+@media (max-width: 768px) {
+  .profileContainer {
+    padding: 15px;
+  }
+
+  .profileHeader {
+    font-size: 22px; /* Diminuído de 24px para 22px */
+  }
+
+  .profileInfo {
+    font-size: 15px; /* Diminuído de 18px para 15px */
+  }
+}
+
+@media (max-width: 480px) {
+  .profileContainer {
+    margin: 10px; 
+  }
+
+  .profileHeader {
+    font-size: 20px; /* Diminuído de 22px para 20px */
+  }
+
+  .profileInfo {
+    font-size: 14px; /* Diminuído de 16px para 14px */
+  }
+}
+
+.resetPasswordButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 18px; /* Diminuído de 12px 20px para 10px 18px */
+  border: none;
+  border-radius: 6px; 
+  cursor: pointer;
+  font-size: 15px; /* Diminuído de 16px para 15px */
+  transition: background-color 0.3s;
+  display: block;
+  margin: 20px auto; 
+}
+  
+.resetPasswordButton:hover {
+  background-color: #0056b3;
+}

@@ -1,0 +1,95 @@
+.form {
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.form:hover {
+  transform: translateY(-5px);
+}
+
+.form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.form p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #666;
+}
+
+.form input[type="text"],
+.form input[type="datetime-local"],
+.form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.form input[type="text"]:focus,
+.form input[type="datetime-local"]:focus,
+.form select:focus {
+  border-color: #0066ff;
+  box-shadow: 0 0 8px rgba(0, 102, 255, 0.2);
+  outline: none;
+}
+
+.form label {
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form button {
+  background-color: #0066ff;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+}
+
+.form button:hover {
+  background-color: #0052cc;
+  transform: scale(1.05);
+}
+
+.error {
+  color: #ff4c4c;
+  background-color: #ffeded;
+  border: 1px solid #ffb3b3;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  margin: 10px 0;
+}

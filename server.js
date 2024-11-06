@@ -310,10 +310,32 @@ app.get('/horarios', async (req, res) => {
 
 
 
+const sendEmail = async (to, subject, text) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to,
+      subject,
+      text,
+    });
+    console.log('Email enviado com sucesso!');
+  } catch (error) {
+    console.error('Erro ao enviar email:', error);
+  }
+};
+
 // Rota para registrar um novo horário
 app.post('/horarios', async (req, res) => {
   try {
-    const { name, horarios, category } = req.body;
+    const { name, horarios, category, avisoAntecedencia } = req.body;
 
     if (!name || !horarios || !category) {
       return res.status(400).json({ message: 'Todos os campos são obrigatórios.' });
@@ -336,30 +358,25 @@ app.post('/horarios', async (req, res) => {
     });
     await newHorario.save();
 
-    // Enviar email
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+    await sendEmail(
+      user.email,
+      'Novo horário cadastrado',
+      `Olá ${user.username},\n\nVocê cadastrou um novo horário:\n\nNome: ${name}\nHorário: ${horarios}\nCategoria: ${category}\n\nObrigado por usar nosso serviço!`
+    );
 
-    const mailOptions = {
-      to: user.email,
-      from: process.env.EMAIL_USER,
-      subject: 'Novo horário cadastrado',
-      text: `Olá ${user.username},\n\nVocê cadastrou um novo horário: \n\n` +
-            `Nome: ${name}\n` +
-            `Horário: ${horarios}\n` +
-            `Categoria: ${category}\n\n` +
-            `Obrigado por usar nosso serviço!`,
-    };
-
-    await transporter.sendMail(mailOptions);
     console.log(`Email enviado para ${user.email} sobre o novo horário.`);
 
-   
+    // Programação do aviso de lembrete
+    if (avisoAntecedencia) {
+      const avisoData = new Date(horarios) - avisoAntecedencia * 60000;
+      setTimeout(() => {
+        sendEmail(
+          user.email,
+          'Lembrete de Horário',
+          `Olá ${user.username}, o evento "${name}" na categoria "${category}" está programado para ${horarios}.`
+        );
+      }, avisoData - Date.now());
+    }
 
     // Retornar resposta de sucesso
     res.status(201).json({ message: 'Horário cadastrado com sucesso e notificações enviadas.' });

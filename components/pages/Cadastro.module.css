@@ -1,0 +1,99 @@
+.cadastro {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cadastro h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #444;
+}
+
+.cadastro form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.campo {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #666;
+}
+
+.campo input,
+.campo select { 
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s; 
+}
+
+.campo input::placeholder {
+  color: #aaa;
+}
+
+.campo select {
+  background-color: #fff;
+}
+
+.campo input:focus,
+.campo select:focus { 
+  border-color: #b39a2a; 
+  box-shadow: 0 0 5px rgba(179, 154, 42, 0.5); 
+}
+
+.passwordWrapper {
+  position: relative;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+button[type="submit"] {
+  background-color: #b39a2a;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #d1b121;
+}

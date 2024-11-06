@@ -1,0 +1,95 @@
+.container {
+    font-family: Arial, sans-serif;
+    background-color: #dbdbdb;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20pt;
+    padding: 30pt;
+    margin: 50pt;
+    margin-left: 30%;
+    padding-top: 12%;
+
+}
+
+.title {
+    text-align: center;
+    color: #333;
+    font-size: 28px; 
+    margin-bottom: 20px;
+}
+
+.form {
+    background-color: white;
+    border-radius: 12px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px; 
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.input {
+    width: 100%;
+    padding: 12px; 
+    border: 1px solid #ccc;
+    border-radius: 6px; 
+    font-size: 16px;
+}
+
+.input:focus {
+    border-color: #b39a2a;
+    box-shadow: 0 0 5px rgba(179, 154, 42, 0.5);
+    outline: none;
+}
+
+.passwordWrapper {
+    position: relative;
+}
+
+.passwordWrapper input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.passwordToggleIcon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: #b39a2a;
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: #b39a2a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px; 
+}
+
+.button:hover {
+    background-color: #e4c01f;
+}
+
+.message {
+    text-align: center;
+    color: #d9534f;
+    margin-top: 15px;
+}
